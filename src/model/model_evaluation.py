@@ -166,10 +166,10 @@ def main():
                 input_example=input_example  # <--- Added input example
             )
 
-            # Save model info
-            # artifact_uri = mlflow.get_artifact_uri()
+            # Save model info in project root (absolute path)
             model_path = "lgbm_model"
-            save_model_info(run.info.run_id, model_path, 'experiment_info.json')
+            experiment_info_path = os.path.join(root_dir, 'experiment_info.json')
+            save_model_info(run.info.run_id, model_path, experiment_info_path)
 
             # Log the vectorizer as an artifact
             mlflow.log_artifact(os.path.join(root_dir, 'tfidf_vectorizer.pkl'))
@@ -197,6 +197,5 @@ def main():
         except Exception as e:
             logger.error(f"Failed to complete model evaluation: {e}")
             print(f"Error: {e}")
-
 if __name__ == '__main__':
     main()

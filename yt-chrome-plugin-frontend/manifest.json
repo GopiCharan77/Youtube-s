@@ -6,11 +6,12 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "tabs",
-    "activeTab",
-    "scripting",
-    "http://localhost/*",
-    "https://www.googleapis.com/*"
-  ]
+ "permissions": [
+  "tabs",
+  "activeTab",
+  "scripting",
+  "http://localhost:8080/*",
+  "https://www.googleapis.com/*"
+]
+
 }
