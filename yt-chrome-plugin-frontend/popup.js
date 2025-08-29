@@ -85,15 +85,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Fetch and display the pie chart inside the chart-container div
         await fetchAndDisplayChart(sentimentCounts);
 
-        // Add the Sentiment Trend Graph section
-        outputDiv.innerHTML += `
-          <div class="section">
-            <div class="section-title">Sentiment Trend Over Time</div>
-            <div id="trend-graph-container"></div>
-          </div>`;
-
-        // Fetch and display the sentiment trend graph
-        await fetchAndDisplayTrendGraph(sentimentData);
+        // Removed Sentiment Trend Over Time section and its graph rendering
 
         // Add the Word Cloud section
         outputDiv.innerHTML += `
@@ -218,28 +210,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  async function fetchAndDisplayTrendGraph(sentimentData) {
-    try {
-      const response = await fetch(`${API_URL}/generate_trend_graph`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sentiment_data: sentimentData })
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch trend graph image');
-      }
-      const blob = await response.blob();
-      const imgURL = URL.createObjectURL(blob);
-      const img = document.createElement('img');
-      img.src = imgURL;
-      img.style.width = '100%';
-      img.style.marginTop = '20px';
-      // Append the image to the trend-graph-container div
-      const trendGraphContainer = document.getElementById('trend-graph-container');
-      trendGraphContainer.appendChild(img);
-    } catch (error) {
-      console.error("Error fetching trend graph image:", error);
-      outputDiv.innerHTML += "<p>Error fetching trend graph image.</p>";
-    }
-  }
+  // Trend graph functionality removed
 });

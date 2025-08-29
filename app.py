@@ -178,7 +178,8 @@ def generate_chart():
         if sum(sizes) == 0:
             raise ValueError("Sentiment counts sum to zero")
         
-        colors = ['#36A2EB', '#C9CBCF', '#FF6384']  # Blue, Gray, Red
+        # Colors: Positive -> Green, Neutral -> Blue, Negative -> Red
+        colors = ['#2ECC71', '#36A2EB', '#FF6384']
 
         # Generate the pie chart
         plt.figure(figsize=(6, 6))
@@ -284,7 +285,7 @@ def generate_trend_graph():
 
         colors = {
             -1: 'red',     # Negative sentiment
-            0: 'gray',     # Neutral sentiment
+            0: 'blue',     # Neutral sentiment
             1: 'green'     # Positive sentiment
         }
 
